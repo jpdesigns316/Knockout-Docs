@@ -1,58 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>Knockout JS Demo</title>
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-
-    <title>Document</title>
-    <style>
-
-    </style>
-
-    <body>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="dropdown well">
-                        <h1 class="inline">Welcome to Knockout Docs</h1>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="dropdown well">
-                        <h2>Title:
-                          <input type="text" class="form-control" type="text" data-bind="value: title">
-                        </h2>
-                        <div>
-                            <h3>Body:</h3>
-                              <textarea class="form-control" data-bind="value: body"></textarea>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
                 <div class="dropdown well">
-                  Debug:
-                  <p data-bind="text: ko.toJSON($data)"></p>
+                    <h1 class="inline">Welcome to Knockout Docs</h1>
                 </div>
-              </div>
             </div>
         </div>
-    </body>
+        <div class="row">
+            <div class="col-md-4">
+                <ul class="list-unstyled dropdown well" data-bind="foreach: items">
+                    <li class="document">
+                        <i class="icon-file"></i>
+                        <a href="#" data-bind="text: title, click: $parent.editItem"></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-8">
+                <div class="dropdown well" data-bind="template: { name: selectedItem().templateName, data: selectedItem }">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="dropdown well">
+                    Debug:
+                    <p data-bind="text: ko.toJSON($data)"></p>
+                </div            </div>
+        </div>
+    </div>
 
+    <!--templates-->
+    <script id="document-template" type="text/html">
+        <h2>Title:
+            <input class="form-control" type="text" data-bind="value: title" />
+        </h2>
+        <div>
+            <h3>Body:</h3>
+            <textarea class="form-control" data-bind="value: body"></textarea>
+        </div>
+    </script>
+    <script type="text/javascript" src="js/libs/jquery.1.11.1.js"></script>
+    <script type="text/javascript" src="js/libs/knockout-3.4.0.js"></script>
+    <script type="text/javascript" src="js/libs/base.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/knockout-docs.js"></script>
+    <script type="text/javascript" src="js/document.js"></script>
 
-    <script src="js/jquery.1.11.1.js" charset="utf-8"></script>
-    <script src="js/knockout-3.4.0.js" charset="utf-8"></script>
-    <script src="js/main.js" charset="utf-8"></script>
-
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+</body>
 </html>

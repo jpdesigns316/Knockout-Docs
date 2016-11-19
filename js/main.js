@@ -1,8 +1,9 @@
-$(function() {
-    var doc = {
-        title: ko.observable("Hello World"),
-        body: ko.observable("Welcome to the world, my friends")
-    };
+//JQuery on load
+$(function () {
+    
+    var viewModel = new KnockoutDocs();
+    viewModel.addItem(new Document("hello", "world"));
+    viewModel.addItem(new Document("goodbye", "world"));
 
-    ko.applyBindings(doc);
-})
+    ko.applyBindings(viewModel);
+});
