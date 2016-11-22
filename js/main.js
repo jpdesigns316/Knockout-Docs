@@ -1,9 +1,14 @@
 //JQuery on load
-$(function () {
-    
+$(function() {
+
     var viewModel = new KnockoutDocs();
-    viewModel.addItem(new Document("hello", "world"));
-    viewModel.addItem(new Document("goodbye", "world"));
+
+
+    viewModel.selectedItem.subscribe(function(newValue) {
+
+    });
 
     ko.applyBindings(viewModel);
+
+
 });
